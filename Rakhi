@@ -3,144 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RAKHI GIFTS</title>
+<title>Rakhi Gifts</title>
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(to bottom, #ffe5ec, #fff0f5);
-        text-align: center;
-        overflow-x: hidden;
-    }
-    .envelope {
-        position: relative;
-        width: 250px;
-        height: 180px;
-        margin: 80px auto 20px;
-        background: #d6336c;
-        border-radius: 0 0 10px 10px;
-        overflow: hidden;
-        perspective: 1000px;
-    }
-    .flap {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100px;
-        background: #ad1457;
-        clip-path: polygon(0 0, 100% 0, 50% 100%);
-        transform-origin: top;
-        transform: rotateX(0deg);
-        transition: transform 1s ease-in-out;
-        z-index: 2;
-    }
-    .card {
-        position: absolute;
-        top: 50px;
-        left: 0;
-        width: 100%;
-        height: 130px;
-        background: #fff;
-        border-radius: 8px;
-        z-index: 1;
-        padding-top: 20px;
-        font-size: 16px;
-        color: #d6336c;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .gifts {
-        display: flex;
-        justify-content: center;
-        gap: 25px;
-        flex-wrap: wrap;
-        margin-top: 30px;
-        position: relative;
-        z-index: 3;
-    }
-    .gift {
-        font-size: 60px;
-        cursor: pointer;
-        position: relative;
-        transition: transform 0.3s ease;
-    }
-    .gift:hover {
-        transform: scale(1.2);
-    }
-    .popup {
-        position: absolute;
-        bottom: 110%;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #fff;
-        padding: 8px 14px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        font-size: 14px;
-        white-space: nowrap;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s;
-    }
-    .popup.show {
-        opacity: 1;
-    }
-    .quotes {
-        margin-top: 50px;
-        font-size: 18px;
-        color: #6a1b9a;
-        padding: 0 20px;
-    }
-    .quote {
-        margin: 10px 0;
-    }
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #ffe6f0;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    color: #d6336c;
+    margin-top: 20px;
+  }
+
+  .envelope {
+    width: 200px;
+    height: 120px;
+    margin: 40px auto;
+    position: relative;
+    cursor: pointer;
+    perspective: 1000px;
+  }
+
+  .flap {
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 60px solid #ff4d6d;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: top;
+    transition: transform 0.8s ease;
+    z-index: 2;
+  }
+
+  .body {
+    width: 200px;
+    height: 120px;
+    background: #ff758f;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .envelope.open .flap {
+    transform: rotateX(180deg);
+  }
+
+  .gifts {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 400px;
+    margin: 20px auto;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .envelope.open + .gifts {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .gift {
+    font-size: 3rem;
+    cursor: pointer;
+    animation: bounce 1s ease infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .quote {
+    font-style: italic;
+    margin: 20px auto;
+    max-width: 500px;
+    font-size: 1.2rem;
+    color: #5a189a;
+  }
 </style>
 </head>
 <body>
 
+<h1>💌 Rakhi Gifts for Honey akka 💌</h1>
+
 <div class="envelope" id="envelope">
-    <div class="flap" id="flap"></div>
-    <div class="card">Happy Raksha Bandhan ❤️<br>For my dear sister Ramya akka</div>
+  <div class="flap"></div>
+  <div class="body"></div>
 </div>
 
-<div class="gifts" id="gifts" style="display:none;">
-    <div class="gift" data-message="Sweet chocolates for my sweetest sister Ramya akka 🍫">🍫<div class="popup"></div></div>
-    <div class="gift" data-message="A bracelet to show my love for you Ramya akka 💕">💍<div class="popup"></div></div>
-    <div class="gift" data-message="Flowers for your beautiful smile Ramya akka 🌸">🌸<div class="popup"></div></div>
-    <div class="gift" data-message="A surprise present for my amazing sister Ramya akka 🎁">🎁<div class="popup"></div></div>
-    <div class="gift" data-message="A celebration of our bond Ramya akka 🎉">🎉<div class="popup"></div></div>
+<div class="gifts">
+  <div class="gift" onclick="alert('A box of chocolates for Honey akka 🍫')">🍫</div>
+  <div class="gift" onclick="alert('A bouquet of flowers for Honey akka 💐')">💐</div>
+  <div class="gift" onclick="alert('A lovely teddy bear for Honey akka 🧸')">🧸</div>
+  <div class="gift" onclick="alert('A surprise gift box for Honey akka 🎁')">🎁</div>
 </div>
 
-<div class="quotes">
-    <div class="quote"><b>Thank you Ramya akka</b>, for tying the knot of love every year. Happy Rakhi! ❤️</div>
-    <div class="quote">"Having a sister like you makes every day brighter."</div>
-    <div class="quote">"Sisters are like stars, you may not always see them, but you know they’re always there."</div>
-    <div class="quote">"No matter the distance, the bond between brother and sister remains strong."</div>
+<div class="quote">
+  Thank you, Honey akka, for always protecting me and being my best friend in every phase of life. 💖  
+  <br><br>
+  "Brothers and sisters are as close as hands and feet."  
+  <br>
+  "A sister is a gift to the heart, a friend to the spirit, a golden thread to the meaning of life."
 </div>
 
 <script>
-    window.onload = () => {
-        const flap = document.getElementById("flap");
-        const gifts = document.getElementById("gifts");
-        
-        setTimeout(() => {
-            flap.style.transform = "rotateX(180deg)";
-            setTimeout(() => {
-                gifts.style.display = "flex";
-            }, 800);
-        }, 1000);
-    };
-
-    document.querySelectorAll('.gift').forEach(gift => {
-        gift.addEventListener('click', () => {
-            let popup = gift.querySelector('.popup');
-            popup.textContent = gift.getAttribute('data-message');
-            popup.classList.add('show');
-            setTimeout(() => {
-                popup.classList.remove('show');
-            }, 2000);
-        });
-    });
+  const envelope = document.getElementById('envelope');
+  envelope.addEventListener('click', () => {
+    envelope.classList.toggle('open');
+  });
 </script>
 
 </body>
